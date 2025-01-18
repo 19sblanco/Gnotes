@@ -1,0 +1,15 @@
+Outcome: create a program that will automatically create a notes folder and connect that folder to github.
+
+inputs:
+    * notes folder name
+    * github account
+
+requirements:
+    * Vim
+    * Github account
+    * Bash command line
+
+
+
+
+Test program on a Linux virtual machine
