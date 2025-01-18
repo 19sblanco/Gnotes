@@ -8,8 +8,21 @@ requirements:
     * Vim
     * Github account
     * Bash command line
+    * Linux
+==========================
+==========================
+1.
+    (home folder)
+    check if bashrc exists
+    add code to bashrc
+    check if vimrc exists
+    add code to vimrc
+2. 
+    link to git account somehow
 
-
-
-
+==========================
+==========================
 Test program on a Linux virtual machine
+==========================
+==========================
+put on pip store and/or make open source
