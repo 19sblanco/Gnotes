@@ -1,14 +1,24 @@
 import os
+from pathlib import Path
 
 
-def get_folder_name():
-    pass
 
 def get_folder_path():
-    pass
+    path = input("""Enter the path and name of your notes folder. 
+Just push Enter if you want to use your home folder with "notes" as its name:
+EX) /home/user/notes 
+""")
+    if path == "":
+        path = str(Path.home()) + "/notes"
+
+    if os.path.exists(path) and os.path.isdir(path):
+        print(f"The folder {path} already exists")
+        exit()
+    return path
 
 def get_github_account():
-    pass
+    account = input()
+    return account
 
 def update_bashrc():
     pass
@@ -21,9 +31,10 @@ def create_notes_folder():
 
 
 def main():
-    name = get_folder_name()
     path = get_folder_path()
     account = get_github_account()
+    print(path)
+    print(account)
 
     update_bashrc()
     update_vimrc()
