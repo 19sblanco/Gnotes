@@ -2,6 +2,7 @@ Outcome: create a program that will automatically create a notes folder and conn
 
 inputs:
     * notes folder name
+    * note folder location (default home)
     * github account
 
 requirements:
@@ -10,19 +11,21 @@ requirements:
     * Bash command line
     * Linux
 ==========================
-==========================
+
 1.
     (home folder)
     check if bashrc exists
     add code to bashrc
     check if vimrc exists
     add code to vimrc
+    (probably should metnion at somepoint to user that the keywords used in the bashrc file and vimrc file are being used, then handle that in someway)
 2. 
-    link to git account somehow
+    create folder in location
+    make a git repo
+    link to git account
 
 ==========================
-==========================
 Test program on a Linux virtual machine
-==========================
+
 ==========================
 put on pip store and/or make open source
