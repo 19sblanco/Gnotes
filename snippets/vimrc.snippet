@@ -1,0 +1,34 @@
+
+" pulls changes on enter with merge handling
+function! GitAutoPull()
+    call timer_start(500, {tid -> execute('checktime')}, {'repeat': 20})
+    let file_path = expand("%:p")
+    if file_path =~# expand('$HOME') . '/n/'
+        call job_start(['sh', '-c', 'cd ' . expand('$HOME') . '/n && git pull --no-edit'])
+    endif
+endfunction
+autocmd VimEnter * call GitAutoPull()
+
+" sync page w/ repo with merge handling
+function! GitUpdate(timer)
+    let file_path = expand("%:p")
+    if file_path =~# expand('$HOME') . '/n/'
+        call job_start(['sh', '-c', 'cd ' . expand('$HOME') . '/n && git pull --no-edit && sleep 1'], {
+            \ 'callback': {-> execute('checktime')}
+            \ })
+    endif
+endfunction
+call timer_start(10000, "GitUpdate", {"repeat": -1})
+
+" push changes on save
+function! GitAutoPush()
+    let file_path = expand("%:p")
+    if file_path =~# expand('$HOME') . '/n/'
+        let git_command = 'cd ' . expand('$HOME') . '/n && '
+        let commit_msg = 'Update ' . expand('%:t') . ' - ' . strftime('%Y-%m-%d %H:%M:%S')
+        let add_output = system(git_command . 'git add .')
+        let commit_output = system(git_command . 'git commit -m ' . shellescape(commit_msg))
+        let push_output = system(git_command . 'git push origin main > /dev/null 2>&1 &')
+    endif
+endfunction
+autocmd BufWritePost * call GitAutoPush()

@@ -1,0 +1,5 @@
+
+# Auto git pull on ~/n repository when opening zsh
+if [[ -d "$HOME/n/.git" ]]; then
+    (cd "$HOME/n" && git pull --no-edit > /dev/null 2>&1 &)
+fi
